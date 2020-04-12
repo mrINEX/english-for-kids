@@ -9,12 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  mode: 'development',
+  mode: 'development', // production
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'GAME',
-      filename: 'index.html', // [duild]: filename: '../index.html' --- filename: 'index.html'
+      title: 'English for kids',
+      filename: 'index.html', // [duild]: filename: '../index.html' [watch] filename: 'index.html'
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css'

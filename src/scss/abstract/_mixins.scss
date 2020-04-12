@@ -1,0 +1,19 @@
+@mixin font($size) {
+    font-size: $size;
+}
+
+@mixin media-laptop {
+    @media (max-width: $content-width) { @content; }
+}
+
+@mixin media-tablet {
+    @media (max-width: $tablet-width) { @content; }
+}
+  
+@mixin media-mobiles-big {
+    @media (max-width: $mobile-big-width) { @content; }
+}
+
+@mixin media-mobiles-small {
+    @media (max-width: $mobile-small-width) { @content; }
+}
