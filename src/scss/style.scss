@@ -6,10 +6,13 @@
 // bases
 @import "./base/base";
 @import "./base/hamburger";
+@import "./base/switch";
 
 // components
-// empty
+@import "./components/card";
 
 // layouts
 @import "./layouts/wrapper";
-@import "./layouts/header"
+@import "./layouts/header";
+@import "./layouts/main";
+@import "./layouts/menu";

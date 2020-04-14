@@ -1,0 +1,27 @@
+.card {
+    width: 300px;
+    height: 260px;
+    margin: 1vw;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    background-color: $color-state-train;
+    border-radius: 15px;
+}
+
+.card__photo-train {
+    width: 280px;
+    height: 70%;
+    margin: 10px;
+    border-radius: 14px;
+}
+
+.card__photo-play {
+    width: 280px;
+    height: 80%;
+    margin: 10px;
+    border-radius: 14px;
+}
+
+.card__word {
+    display: flex;
+    justify-content: center;
+}

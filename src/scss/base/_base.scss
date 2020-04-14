@@ -8,8 +8,6 @@ html {
 }
 
 body {
-    font-size:  1.6rem;
+    @include font($size: 3rem, $weight: bold);
     font-family: Verdana, sans-serif;
-
-    // @include font(size: 1.6rem);
 }

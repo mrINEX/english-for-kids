@@ -1,6 +1,6 @@
 %hamburger-line {
     content: '';
-    background-color: $color-humburger;
+    background-color: black;
     display: inline-block;
     position: absolute;
     width: 100%;
@@ -11,8 +11,9 @@
 .hamburger {
     display: inline-block;
     position: relative;
-    width: 80px;
-    height: 60px;
+    z-index: 3;
+    width: 40px;
+    height: 30px;
     &:before {
         @extend %hamburger-line;
         top: 0;
