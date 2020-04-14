@@ -1,5 +1,21 @@
+const { MENU, IMG } = require('./data');
+
 let menuMobile = document.createElement('nav');
 menuMobile.setAttribute('class', 'navigation');
+
+let template = '<div class="menu">';
+template += '<div class="menu__nav">MENU</div>';
+MENU.forEach((node, index) => {
+    template += `
+    <div class="menu__topic ${index}">
+        <span class="menu__summary">${node}</span>
+        <img class="menu__img" src="${IMG[index]}">
+    </div>
+    `;
+})
+template += '</div>';
+menuMobile.innerHTML = template;
+
 document.querySelector('body').append(menuMobile);
 
 let header = document.createElement('header');
@@ -9,9 +25,10 @@ header.innerHTML = `
         <div class="hamburger">
             <div class="hamburger__line"></div>
         </div>
-        <div class="switch">
+        <label class="switch">
+            <input type="checkbox">
             <span class="switch__slider"></span>
-        </div>
+        </label>
     </div>
 `;
 document.querySelector('body').append(header);

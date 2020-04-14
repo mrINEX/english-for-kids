@@ -11,3 +11,7 @@ body {
     @include font($size: 3rem, $weight: bold);
     font-family: Verdana, sans-serif;
 }
+
+.event-none {
+    pointer-events: none;
+}

@@ -9,7 +9,7 @@ class Card {
     generateTrainCard() {
         let template = '';
         let div = document.createElement('div');
-        div.setAttribute('class', 'card');
+        div.setAttribute('class', 'card card-train');
         template += `<img class="card__photo-train" src="./src/assets/${this.image}">`;
         template += `<span class="card__word">${this.word}</span>`;
         div.innerHTML = template;
@@ -19,7 +19,7 @@ class Card {
     generatePlayCard() {
         let template = '';
         let div = document.createElement('div');
-        div.setAttribute('class', 'card');
+        div.setAttribute('class', 'card card-play');
         template += `<img class="card__photo-play" src="./src/assets/${this.image}">`;
         div.innerHTML = template;
         return div;

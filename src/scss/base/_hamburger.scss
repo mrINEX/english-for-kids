@@ -11,6 +11,7 @@
 .hamburger {
     display: inline-block;
     position: relative;
+    cursor: pointer;
     z-index: 3;
     width: 40px;
     height: 30px;
@@ -24,6 +25,12 @@
         bottom: 0;
         left: 0;
     }
+    @extend %transition;
+}
+
+.hamburger-open {
+    transform: rotate(90deg);
+    @extend %transition;
 }
 
 .hamburger__line {

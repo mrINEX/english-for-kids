@@ -1,18 +1,60 @@
 .switch{
   position: relative;
-  width: 90px;
+  display: inline-block;
+  @include font($size: 1.6rem, $weight: bold);
+  width: 80px;
   height: 30px;
-  border-radius: 15px;
-  background-color: $color-state-train;
+  input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .switch__slider {
+      background-color: $color-state-play;
+    }
+    &:checked + .switch__slider:before {
+      transform: translateX(50px);
+    }
+    &:checked + .switch__slider:after {
+      content: 'play';
+      left: 8px;
+      top: 4px;
+      position: absolute;
+    }
+  }
 }
 
 .switch__slider {
   position: absolute;
   cursor: pointer;
-  top: 3px;
-  left: 3px;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  background-color: $color-state-train;
+  &:before {
+    border-radius: 100%;
+    position: absolute;
+    content: '';
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    @extend %transition;
+  }
+  &:after {
+    content: 'train';
+    left: 32px;
+    top: 4px;
+    position: absolute;
+    @extend %transition;
+  }
+}
+
+// name state
+.switch__text {
+  position: absolute;
+  top: 4px;
+  left: 32px;
 }
