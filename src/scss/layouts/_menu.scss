@@ -24,14 +24,17 @@
     margin: 5px;
 }
 
-.menu__nav {
+.menu__nav,
+.menu__statistics {
     width: 280px;
     cursor: pointer;
     background-color: rgb(81, 145, 153);
     border-radius: 15px;
     margin: 5px;
-    padding: 20px;
     text-align: center;
+    div {
+        padding: 20px;
+    }
 }
 
 .navigation {
@@ -41,7 +44,7 @@
     @extend %transition;
     z-index: 2;
     padding-top: 108px;
-    background-color: rgb(117, 117, 79);
+    background-color: #d4d4bc;
 }
 
 .navigation-show {

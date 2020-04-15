@@ -1,4 +1,7 @@
 require('./js/createPage');
+const { setSelectedLink } = require('./js/setSelectedLink');
+const { hideNavigation, removeContent } = require('./js/hideNavigation');
+const { removeActive, setActive, setSwitch } = require ('./js/activeMenu');
 const { handlerMenu } = require('./js/handlerMenu');
 const { makeCards } = require('./js/makeCards');
 const { makeMenu } = require('./js/makeMenu');
@@ -7,42 +10,42 @@ const { data } = require('./js/data');
 
 window.onload = () => {
     makeMenu();
-
-    // makeCards(data[0], 'train');
-    // makeCards(data[0], 'play');
     handlerMenu(document.querySelector('.hamburger'), document.querySelector('.navigation'));
+
     document.querySelector('input').addEventListener('change', ({target}) => {
+        let position = setSwitch('.menu');
         if(target.checked) {
-            console.log('play');
-            // document.querySelector('.main__wrapper').innerHTML = '';
+            if (isFinite(position)) {
+                removeContent('.main__wrapper');
+                makeCards(data[position], 'play');
+            }
         } else {
-            console.log('train');
-            // document.querySelector('.main__wrapper').innerHTML = '';
+            if (isFinite(position)) {
+                removeContent('.main__wrapper');
+                makeCards(data[position], 'train');
+            }
         }
     });
+
     document.addEventListener('click', ({target}) => {
         if (target.parentNode.classList.contains('menu__topic')) {
+
+            removeActive('.menu');
+            hideNavigation(document.querySelector('.navigation'), document.querySelector('.hamburger'));
+
             if (isPlay()) {
-                document.querySelector('.navigation').classList.remove('navigation-show');
-                document.querySelector('.hamburger').classList.remove('hamburger-open');
-                document.querySelector('.main__wrapper').innerHTML = '';
-
-                // target.classList.add('border_play');
+                setSelectedLink('.menu', target, 'border_play');
                 makeCards(data[target.parentNode.classList[1]], 'play');
-                
             } else {
-                document.querySelector('.navigation').classList.remove('navigation-show');
-                document.querySelector('.hamburger').classList.remove('hamburger-open');
-                document.querySelector('.main__wrapper').innerHTML = '';
-
-                // target.classList.add('border_train');
+                setSelectedLink('.menu', target, 'border_train');
                 makeCards(data[target.parentNode.classList[1]], 'train');
             }
         }
-        if (target.classList.contains('menu__nav')) {
-            document.querySelector('.navigation').classList.remove('navigation-show');
-            document.querySelector('.hamburger').classList.remove('hamburger-open');
-            document.querySelector('.main__wrapper').innerHTML = '';
+        if (target.parentNode.classList.contains('menu__nav')) {
+
+            hideNavigation(document.querySelector('.navigation'), document.querySelector('.hamburger'));
+            removeActive('.menu');
+            setActive(isPlay(), target);
             makeMenu();
         }
     })

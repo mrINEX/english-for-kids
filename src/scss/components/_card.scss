@@ -6,7 +6,8 @@
     border-radius: 15px;
 }
 
-.card__photo-train {
+.card__photo-train,
+.card__photo-play {
     width: 280px;
     height: 70%;
     margin: 10px;
@@ -15,13 +16,6 @@
 
 .card-train {
     background-color: $color-state-train;
-}
-
-.card__photo-play {
-    width: 280px;
-    height: 80%;
-    margin: 10px;
-    border-radius: 14px;
 }
 
 .card-play {
@@ -35,8 +29,10 @@
 
 .border_play {
     border: 5px solid $color-state-play;
+    box-shadow: -6px 3px 26px rgba(0, 0, 0, 1);
 }
 
 .border_train {
     border: 5px solid $color-state-train;
+    box-shadow: -6px 3px 26px rgba(0, 0, 0, 1);
 }

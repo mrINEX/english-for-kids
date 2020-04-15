@@ -1,6 +1,106 @@
 const data = [
   [
     {
+      word: 'galaxy',
+      translation: 'галактика',
+      image: 'img/galaxy.jpg',
+      audioSrc: 'audio/galaxy.mp3'
+    },
+    {
+      word: 'earth',
+      translation: 'земля',
+      image: 'img/earth.jpg',
+      audioSrc: 'audio/earth.mp3'
+    },
+    {
+      word: 'sun',
+      translation: 'солнце',
+      image: 'img/sun.jpg',
+      audioSrc: 'audio/sun.mp3'
+    },
+    {
+      word: 'moon',
+      translation: 'луна',
+      image: 'img/moon.jpg',
+      audioSrc: 'audio/moon.mp3'
+    },
+    {
+      word: 'black hole',
+      translation: 'черная дыра',
+      image: 'img/black hole.jpg',
+      audioSrc: 'audio/black hole.mp3'
+    },
+    {
+      word: 'saturn',
+      translation: 'сатурн',
+      image: 'img/saturn.jpg',
+      audioSrc: 'audio/saturn.mp3'
+    },
+    {
+      word: 'quasar',
+      translation: 'квазар',
+      image: 'img/quasar.jpg',
+      audioSrc: 'audio/quasar.mp3'
+    },
+    {
+      word: 'neptune',
+      translation: 'нептун',
+      image: 'img/neptune.jpg',
+      audioSrc: 'audio/neptune.mp3'
+    },
+  ],
+  [
+    {
+      word: 'harvester',
+      translation: 'уборочная машина',
+      image: 'img/harvester.jpg',
+      audioSrc: 'audio/harvester.mp3'
+    },
+    {
+      word: 'tractor',
+      translation: 'трактор',
+      image: 'img/tractor.jpg',
+      audioSrc: 'audio/tractor.mp3'
+    },
+    {
+      word: 'dump truck',
+      translation: 'самосвал',
+      image: 'img/dump truck.jpg',
+      audioSrc: 'audio/dump truck.mp3'
+    },
+    {
+      word: 'ship',
+      translation: 'корабль',
+      image: 'img/ship.jpg',
+      audioSrc: 'audio/ship.mp3'
+    },
+    {
+      word: 'airplane',
+      translation: 'самолет',
+      image: 'img/airplane.jpg',
+      audioSrc: 'audio/airplane.mp3'
+    },
+    {
+      word: 'motor car',
+      translation: 'автомобиль',
+      image: 'img/car.png',
+      audioSrc: 'audio/.mp3'
+    },
+    {
+      word: 'truck',
+      translation: 'грузовик',
+      image: 'img/truck.jpg',
+      audioSrc: 'audio/truck.mp3'
+    },
+    {
+      word: 'tank',
+      translation: 'танк',
+      image: 'img/tank.jpg',
+      audioSrc: 'audio/tank.mp3'
+    },
+  ],
+  [
+    {
       word: 'cry',
       translation: 'плакать',
       image: 'img/cry.jpg',
