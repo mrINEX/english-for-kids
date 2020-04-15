@@ -36,3 +36,12 @@
     border: 5px solid $color-state-train;
     box-shadow: -6px 3px 26px rgba(0, 0, 0, 1);
 }
+
+.start-play {
+    width: 85%;
+    height: 100px;
+    background: $color-menu-button;
+    color: $color-menu-button-text;
+    border-radius: 15px;
+    @include font($size: 3rem, $weight: bold);
+}

@@ -28,7 +28,8 @@
 .menu__statistics {
     width: 280px;
     cursor: pointer;
-    background-color: rgb(81, 145, 153);
+    background: $color-menu-button;
+    color: $color-menu-button-text;
     border-radius: 15px;
     margin: 5px;
     text-align: center;
@@ -44,7 +45,7 @@
     @extend %transition;
     z-index: 2;
     padding-top: 108px;
-    background-color: #d4d4bc;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 .navigation-show {

@@ -1,16 +1,13 @@
-function hideNavigation(one, two) {
-    one.classList.remove('navigation-show');
-    two.classList.remove('hamburger-open');
-
-    // removePage
-    document.querySelector('.main__wrapper').innerHTML = '';
+function hideNavigation(nav, hamburger) {
+  document.querySelector(nav).classList.remove('navigation-show');
+  document.querySelector(hamburger).classList.remove('hamburger-open');
 }
 
 function removeContent(element) {
-    document.querySelector(element).innerHTML = '';
+  document.querySelector(element).innerHTML = '';
 }
 
 module.exports = {
-    hideNavigation,
-    removeContent,
-}
+  hideNavigation,
+  removeContent,
+};

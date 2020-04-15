@@ -1,25 +1,25 @@
 const { MENU, IMG } = require('./data');
 
-let menuMobile = document.createElement('nav');
+const menuMobile = document.createElement('nav');
 menuMobile.setAttribute('class', 'navigation');
 
 let template = '<div class="menu">';
 template += '<div class="menu__nav border_train"><div>MENU</div></div>';
 template += '<div class="menu__statistics"><div>STATISTICS</div></div>';
 MENU.forEach((node, index) => {
-    template += `
+  template += `
     <div class="menu__topic ${index}">
         <span class="menu__summary">${node}</span>
         <img class="menu__img" src="${IMG[index]}">
     </div>
     `;
-})
+});
 template += '</div>';
 menuMobile.innerHTML = template;
 
 document.querySelector('body').append(menuMobile);
 
-let header = document.createElement('header');
+const header = document.createElement('header');
 header.setAttribute('class', 'header');
 header.innerHTML = `
     <div class="wrapper header__wrapper">
@@ -34,7 +34,7 @@ header.innerHTML = `
 `;
 document.querySelector('body').append(header);
 
-let main = document.createElement('main');
+const main = document.createElement('main');
 main.setAttribute('class', 'main');
 main.innerHTML = `
     <div class="wrapper main__wrapper"></div>
