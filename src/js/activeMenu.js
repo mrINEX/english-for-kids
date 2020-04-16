@@ -15,17 +15,17 @@ function setActive(bool, target) {
 }
 
 function setSwitch(element) {
-  let position;
+  let position = 1;
   document.querySelector(element).childNodes.forEach((node) => {
     if (node.classList) {
       if (node.classList.contains('border_play')) {
         node.classList.remove('border_play');
         node.classList.add('border_train');
-        position = node.classList[1];
+        position = node.classList[position];
       } else if (node.classList.contains('border_train')) {
         node.classList.remove('border_train');
         node.classList.add('border_play');
-        position = node.classList[1];
+        position = node.classList[position];
       }
     }
   });

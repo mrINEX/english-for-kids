@@ -12,8 +12,21 @@ class Card {
     let template = '';
     const div = document.createElement('div');
     div.setAttribute('class', 'card card-train');
-    template += `<img class="card__photo-train" src="./src/assets/${this.image}">`;
-    template += `<span class="card__word">${this.word}</span>`;
+    div.setAttribute('data-song-card', `${this.audioSrc}`);
+    div.setAttribute('data-translate-card', `${this.translation}`);
+    template += `<img class="card__photo-train event-none" src="./src/assets/${this.image}">`;
+    template += `<span class="card__word event-none">${this.word}</span>`;
+    template += '<img class="card-switch" src="./src/assets/img/switch.png">';
+    div.innerHTML = template;
+    return div;
+  }
+
+  generateTrainTurn() {
+    let template = '';
+    const div = document.createElement('div');
+    div.setAttribute('class', 'card card-train-turn turn-back');
+    template += `<img class="card__photo-train event-none" src="./src/assets/${this.image}">`;
+    template += `<span class="card__word event-none">${this.translation}</span>`;
     div.innerHTML = template;
     return div;
   }
@@ -22,7 +35,7 @@ class Card {
     let template = '';
     const div = document.createElement('div');
     div.setAttribute('class', 'card card-play');
-    template += `<img class="card__photo-play" src="./src/assets/${this.image}">`;
+    template += `<img class="card__photo-play event-none" src="./src/assets/${this.image}">`;
     div.innerHTML = template;
     return div;
   }

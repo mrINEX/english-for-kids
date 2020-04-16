@@ -84,7 +84,7 @@ const data = [
       word: 'motor car',
       translation: 'автомобиль',
       image: 'img/car.png',
-      audioSrc: 'audio/.mp3',
+      audioSrc: 'audio/motor car.mp3',
     },
     {
       word: 'truck',
