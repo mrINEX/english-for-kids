@@ -15,3 +15,7 @@ body {
 .event-none {
     pointer-events: none;
 }
+
+.not-active {
+    opacity: 0.3;
+}

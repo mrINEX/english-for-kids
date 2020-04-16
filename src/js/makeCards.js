@@ -1,12 +1,15 @@
 const { Card } = require('./createCard');
 
+const nodesGame = [];
+
 function makeCards(array, typeCards) {
   const main = document.querySelector('.main__wrapper');
+  nodesGame.length = 0;
 
   if (typeCards === 'train') {
     array.forEach((card, index) => {
       const instansTrain = new Card(card);
-
+      nodesGame.push(instansTrain);
       const newTrain = instansTrain.generateTrainCard();
       newTrain.setAttribute('data-num-card', `${index}`);
       main.append(newTrain);
@@ -14,12 +17,11 @@ function makeCards(array, typeCards) {
   }
 
   if (typeCards === 'play') {
-    main.innerHTML = '<button class="start-play">START PLAY</button>';
-    array.forEach((card, index) => {
+    main.innerHTML = '<div class="wrapper-start"><button class="start-play">START PLAY</button></div>';
+    array.forEach((card) => {
       const instansPlay = new Card(card);
-
+      nodesGame.push(instansPlay);
       const newPlay = instansPlay.generatePlayCard();
-      newPlay.setAttribute('data-num-card', `${index}`);
       main.append(newPlay);
     });
   }
@@ -27,4 +29,5 @@ function makeCards(array, typeCards) {
 
 module.exports = {
   makeCards,
+  nodesGame,
 };

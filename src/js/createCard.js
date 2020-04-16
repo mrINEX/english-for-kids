@@ -21,23 +21,23 @@ class Card {
     return div;
   }
 
-  generateTrainTurn() {
-    let template = '';
-    const div = document.createElement('div');
-    div.setAttribute('class', 'card card-train-turn turn-back');
-    template += `<img class="card__photo-train event-none" src="./src/assets/${this.image}">`;
-    template += `<span class="card__word event-none">${this.translation}</span>`;
-    div.innerHTML = template;
-    return div;
-  }
-
   generatePlayCard() {
     let template = '';
     const div = document.createElement('div');
     div.setAttribute('class', 'card card-play');
+    div.setAttribute('data-word-card', `${this.word}`);
     template += `<img class="card__photo-play event-none" src="./src/assets/${this.image}">`;
     div.innerHTML = template;
     return div;
+  }
+
+  sing() {
+    const song = new Audio(`./src/assets/${this.audioSrc}`);
+    song.play();
+  }
+
+  getWord() {
+    return this.word;
   }
 }
 

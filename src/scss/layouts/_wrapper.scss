@@ -2,3 +2,13 @@
     max-width: $laptop-width;
     margin: auto;
 }
+
+.wrapper-start {
+    width: 100%;
+    text-align: center;
+    height: 155px;
+    .range-statistic {
+        overflow: hidden;
+        height: 50px;
+    }
+}
