@@ -2,6 +2,7 @@ require('./js/createPage');
 const { setNavigation } = require('./js/setSelectedLink');
 const { hideNavigation, removeContent } = require('./js/hideNavigation');
 const { removeActive, setActive, setSwitch } = require('./js/activeMenu');
+const { setMenuActive } = require('./js/setMenuActive');
 const { handlerNavigation } = require('./js/handlerMenu');
 const { makeCards } = require('./js/makeCards');
 const { turnsCard } = require('./js/turnsCard');
@@ -10,11 +11,14 @@ const { startPlay } = require('./js/startPlay');
 const { makeMenu } = require('./js/makeMenu');
 const { isContain } = require('./js/isContain');
 const { isPlay } = require('./js/isPlay');
+const { win } = require('./js/isWin');
 const { data } = require('./js/data');
+const { audio } = require('./js/getSong');
 const { getIcon } = require('./js/icon');
 
 window.onload = () => {
   let count = 0;
+  let incorrect = 0;
   makeMenu();
   handlerNavigation('.hamburger', '.navigation');
 
@@ -74,26 +78,30 @@ window.onload = () => {
       const isCorrect = nodesGame[count].getWord() === target.getAttribute('data-word-card');
       if (isCorrect) {
         target.classList.add('event-none', 'not-active');
-        new Audio('./src/assets/audio/correct.mp3').play();
+        audio.correct().play();
         range.prepend(getIcon(isCorrect));
         count += 1;
         if (count < 8) {
           nodesGame[count].sing();
         } else {
           count = 0;
-          new Audio('./src/assets/audio/success.mp3').play();
           removeActive('.menu');
           removeContent('.main__wrapper');
-          if (isPlay) {
-            document.querySelector('.menu__nav').classList.add('border_play');
+          setMenuActive(isPlay());
+          if (incorrect > 0) {
+            win.no(incorrect);
+            audio.failure().play();
           } else {
-            document.querySelector('.menu__nav').classList.add('border_train');
+            win.yes();
+            audio.success().play();
           }
-          makeMenu();
+          incorrect = 0;
+          setTimeout(() => makeMenu(), 5000);
         }
       } else {
+        incorrect += 1;
         range.prepend(getIcon(isCorrect));
-        new Audio('./src/assets/audio/error.mp3').play();
+        audio.error().play();
       }
     }
 

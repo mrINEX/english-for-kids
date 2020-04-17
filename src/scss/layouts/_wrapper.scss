@@ -12,3 +12,21 @@
         height: 50px;
     }
 }
+
+.win-message {
+    text-align: center;
+    color: yellowgreen;
+    @include font($size: 1.4rem, $weight: bold);
+    img {
+        width: 100%;
+    }
+}
+
+.not-win-message {
+    text-align: center;
+    color: #d43511;
+    @include font($size: 1.4rem, $weight: bold);
+    img {
+        width: 100%;
+    }
+}
