@@ -14,6 +14,10 @@ const audio = {
   error() {
     return new Audio('./src/assets/audio/error.mp3');
   },
+
+  set(path) {
+    return new Audio(`./src/assets/${path}`);
+  },
 };
 
 module.exports = {

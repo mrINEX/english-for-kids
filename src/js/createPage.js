@@ -5,7 +5,7 @@ menuMobile.setAttribute('class', 'navigation');
 
 let template = '<div class="menu">';
 template += '<div class="menu__nav border_train"><div>MENU</div></div>';
-template += '<div class="menu__statistics"><div>STATISTICS</div></div>';
+template += '<div class="menu__statistics"><div class="event-none">STATISTICS</div></div>';
 MENU.forEach((node, index) => {
   template += `
     <div class="menu__topic ${index}">

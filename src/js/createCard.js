@@ -6,6 +6,9 @@ class Card {
     this.translation = translation;
     this.image = image;
     this.audioSrc = audioSrc;
+    this.countTrain = 0;
+    this.countPlayYes = 0;
+    this.countPlayNo = 0;
   }
 
   generateTrainCard() {
@@ -38,6 +41,10 @@ class Card {
 
   getWord() {
     return this.word;
+  }
+
+  getStatistics() {
+    return (`<span>${this.word}</span>`);
   }
 }
 

@@ -6,11 +6,19 @@ function removeActive(element) {
   });
 }
 
-function setActive(bool, target) {
+function setActiveParent(bool, target) {
   if (bool) {
     target.parentNode.classList.add('border_play');
   } else {
     target.parentNode.classList.add('border_train');
+  }
+}
+
+function setActive(bool, node) {
+  if (bool) {
+    document.querySelector(node).classList.add('border_play');
+  } else {
+    document.querySelector(node).classList.add('border_train');
   }
 }
 
@@ -34,6 +42,7 @@ function setSwitch(element) {
 
 module.exports = {
   removeActive,
+  setActiveParent,
   setActive,
   setSwitch,
 };

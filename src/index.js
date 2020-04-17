@@ -1,14 +1,16 @@
 require('./js/createPage');
 const { setNavigation } = require('./js/setSelectedLink');
 const { hideNavigation, removeContent } = require('./js/hideNavigation');
-const { removeActive, setActive, setSwitch } = require('./js/activeMenu');
+const {
+  removeActive, setActiveParent, setActive, setSwitch,
+} = require('./js/activeMenu');
 const { setMenuActive } = require('./js/setMenuActive');
 const { handlerNavigation } = require('./js/handlerMenu');
 const { makeCards } = require('./js/makeCards');
 const { turnsCard } = require('./js/turnsCard');
-const { nodesGame } = require('./js/makeCards');
+const { nodesGame, nodeStatistics } = require('./js/makeCards');
 const { startPlay } = require('./js/startPlay');
-const { makeMenu } = require('./js/makeMenu');
+const { makeMenu, makeStatistics } = require('./js/makeMenu');
 const { isContain } = require('./js/isContain');
 const { isPlay } = require('./js/isPlay');
 const { win } = require('./js/isWin');
@@ -51,17 +53,24 @@ window.onload = () => {
       }
     }
 
+    if (isContain('menu__statistics', target)) {
+      removeActive('.menu');
+      setActive(isPlay(), '.menu__statistics');
+      makeCards(data, 'statistics');
+      removeContent('.main__wrapper');
+      makeStatistics(nodeStatistics);
+    }
+
     if (target.parentNode.classList.contains('menu__nav')) {
       removeActive('.menu');
       removeContent('.main__wrapper');
-      setActive(isPlay(), target);
+      setActiveParent(isPlay(), target);
       makeMenu();
     }
 
     if (target.classList.contains('card-train')) {
       const audioSrc = target.getAttribute('data-song-card');
-      const song = new Audio(`./src/assets/${audioSrc}`);
-      song.play();
+      audio.set(audioSrc).play();
     }
 
     if (isContain('start-play', target)) {
@@ -73,7 +82,7 @@ window.onload = () => {
       };
     }
 
-    if (target.classList.contains('card-play')) {
+    if (document.querySelector('.sing-again') && target.classList.contains('card-play')) {
       const range = document.querySelector('.range-statistic');
       const isCorrect = nodesGame[count].getWord() === target.getAttribute('data-word-card');
       if (isCorrect) {
@@ -89,14 +98,20 @@ window.onload = () => {
           removeContent('.main__wrapper');
           setMenuActive(isPlay());
           if (incorrect > 0) {
-            win.no(incorrect);
-            audio.failure().play();
+            setTimeout(() => {
+              win.no(incorrect);
+              audio.failure().play();
+            }, 500);
           } else {
-            win.yes();
-            audio.success().play();
+            setTimeout(() => {
+              win.yes();
+              audio.success().play();
+            }, 500);
           }
-          incorrect = 0;
-          setTimeout(() => makeMenu(), 5000);
+          setTimeout(() => {
+            makeMenu();
+            incorrect = 0;
+          }, 6000);
         }
       } else {
         incorrect += 1;
