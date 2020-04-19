@@ -9,9 +9,8 @@ function makeCards(array, typeCards) {
 
   if (typeCards === 'train') {
     array.forEach((card, index) => {
-      const instansTrain = new Card(card);
-      nodesGame.push(instansTrain);
-      const newTrain = instansTrain.generateTrainCard();
+      nodesGame.push(card);
+      const newTrain = card.generateTrainCard();
       newTrain.setAttribute('data-num-card', `${index}`);
       main.append(newTrain);
     });
@@ -20,19 +19,22 @@ function makeCards(array, typeCards) {
   if (typeCards === 'play') {
     main.innerHTML = '<div class="wrapper-start"><button class="start-play">START PLAY</button></div>';
     array.forEach((card) => {
-      const instansPlay = new Card(card);
-      nodesGame.push(instansPlay);
-      const newPlay = instansPlay.generatePlayCard();
+      nodesGame.push(card);
+      const newPlay = card.generatePlayCard();
       main.append(newPlay);
     });
   }
 
   if (!nodeStatistics.length && typeCards === 'statistics') {
-    console.log('state arr');
-    array.forEach((categoryArr) => {
+    const storage = JSON.parse(localStorage.getItem('statistics'));
+    array.forEach((categoryArr, index) => {
       const category = [];
       for (let card = 0; card < categoryArr.length; card += 1) {
-        category.push(new Card(categoryArr[card]));
+        const newNode = new Card(categoryArr[card]);
+        if (storage) {
+          newNode.statisticsStorage(storage[index][card]);
+        }
+        category.push(newNode);
       }
       nodeStatistics.push(category);
     });

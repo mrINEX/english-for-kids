@@ -2,8 +2,9 @@
     width: 300px;
     height: 260px;
     margin: 1vw;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
+    background: rgb(100,100,100) radial-gradient(circle at 0 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
+    box-shadow: inset rgba(0,0,0,.5) -3px -3px 8px, inset rgba(255,255,255,.9) 3px 3px 8px, rgba(0,0,0,.8) 3px 3px 8px -3px;
 }
 
 .card__photo-train,

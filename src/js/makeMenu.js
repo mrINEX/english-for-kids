@@ -21,9 +21,9 @@ function makeStatistics(arr) {
   let template = '<div class="statistics">';
   MENU.forEach((node, index) => {
     template += `
-        <div class="statistics__category ${index}">
-            <span class="statistics__name">${node}</span>
-        `;
+    <div class="statistics__category ${index}">
+      <h2 class="statistics__name">${node}</h2>
+    `;
     for (let i = 0; i < arr[index].length; i += 1) {
       template += arr[index][i].getStatistics();
     }

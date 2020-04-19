@@ -9,12 +9,43 @@ class Card {
     this.countTrain = 0;
     this.countPlayYes = 0;
     this.countPlayNo = 0;
+    this.errorRate = 0;
+  }
+
+  statisticsState() {
+    return [this.countTrain, this.countPlayYes, this.countPlayNo, this.errorRate];
+  }
+
+  statisticsStorage([a, b, c, d]) {
+    this.countTrain = a;
+    this.countPlayYes = b;
+    this.countPlayNo = c;
+    this.errorRate = d;
+  }
+
+  incrementNode(node) {
+    if (node === 'train') {
+      this.countTrain += 1;
+    }
+    if (node === 'playYes') {
+      this.countPlayYes += 1;
+      if (this.countPlayYes > 0 && this.countPlayNo > 0) {
+        this.errorRate = Math.round(100 - ((this.countPlayYes / this.countPlayNo) * 100));
+      }
+    }
+    if (node === 'playNo') {
+      this.countPlayNo += 1;
+      if (this.countPlayYes > 0 && this.countPlayNo > 0) {
+        this.errorRate = Math.round(100 - ((this.countPlayYes / this.countPlayNo) * 100));
+      }
+    }
   }
 
   generateTrainCard() {
     let template = '';
     const div = document.createElement('div');
     div.setAttribute('class', 'card card-train');
+    div.setAttribute('data-word-card', `${this.word}`);
     div.setAttribute('data-song-card', `${this.audioSrc}`);
     div.setAttribute('data-translate-card', `${this.translation}`);
     template += `<img class="card__photo-train event-none" src="./src/assets/${this.image}">`;
@@ -44,7 +75,18 @@ class Card {
   }
 
   getStatistics() {
-    return (`<span>${this.word}</span>`);
+    return (`<div class="category">
+      <span>${this.word}</span>
+      <div class="wrapper-count">
+        <div class="train"> train number: ${this.countTrain}</div>
+        <div class="play"> play number success: ${this.countPlayYes}</div>
+        <div class="play"> 
+          play number failure: ${this.countPlayNo}
+          <span>${this.errorRate}%</span>
+        </div>
+      </div>
+      <span>${this.translation}</span>
+    </div>`);
   }
 }
 

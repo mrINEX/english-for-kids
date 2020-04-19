@@ -12,6 +12,7 @@ const { nodesGame, nodeStatistics } = require('./js/makeCards');
 const { startPlay } = require('./js/startPlay');
 const { makeMenu, makeStatistics } = require('./js/makeMenu');
 const { isContain } = require('./js/isContain');
+const { increment, incrementPlay } = require('./js/setStatistics');
 const { isPlay } = require('./js/isPlay');
 const { win } = require('./js/isWin');
 const { data } = require('./js/data');
@@ -22,6 +23,7 @@ window.onload = () => {
   let count = 0;
   let incorrect = 0;
   makeMenu();
+  makeCards(data, 'statistics');
   handlerNavigation('.hamburger', '.navigation');
 
   document.querySelector('input').addEventListener('change', ({ target }) => {
@@ -29,9 +31,9 @@ window.onload = () => {
     if (Number.isFinite(Number(position))) {
       removeContent('.main__wrapper');
       if (target.checked) {
-        makeCards(data[position], 'play');
+        makeCards(nodeStatistics[position], 'play');
       } else {
-        makeCards(data[position], 'train');
+        makeCards(nodeStatistics[position], 'train');
       }
     }
   });
@@ -46,17 +48,16 @@ window.onload = () => {
       removeContent('.main__wrapper');
       if (isPlay()) {
         setNavigation('.menu', target, 'border_play');
-        makeCards(data[target.parentNode.classList[1]], 'play');
+        makeCards(nodeStatistics[target.parentNode.classList[1]], 'play');
       } else {
         setNavigation('.menu', target, 'border_train');
-        makeCards(data[target.parentNode.classList[1]], 'train');
+        makeCards(nodeStatistics[target.parentNode.classList[1]], 'train');
       }
     }
 
     if (isContain('menu__statistics', target)) {
       removeActive('.menu');
       setActive(isPlay(), '.menu__statistics');
-      makeCards(data, 'statistics');
       removeContent('.main__wrapper');
       makeStatistics(nodeStatistics);
     }
@@ -71,6 +72,7 @@ window.onload = () => {
     if (target.classList.contains('card-train')) {
       const audioSrc = target.getAttribute('data-song-card');
       audio.set(audioSrc).play();
+      increment(nodeStatistics, target, 'train');
     }
 
     if (isContain('start-play', target)) {
@@ -87,6 +89,7 @@ window.onload = () => {
       const isCorrect = nodesGame[count].getWord() === target.getAttribute('data-word-card');
       if (isCorrect) {
         target.classList.add('event-none', 'not-active');
+        incrementPlay(nodeStatistics, nodesGame[count].getWord(), 'playYes');
         audio.correct().play();
         range.prepend(getIcon(isCorrect));
         count += 1;
@@ -111,10 +114,11 @@ window.onload = () => {
           setTimeout(() => {
             makeMenu();
             incorrect = 0;
-          }, 6000);
+          }, 3000);
         }
       } else {
         incorrect += 1;
+        incrementPlay(nodeStatistics, nodesGame[count].getWord(), 'playNo');
         range.prepend(getIcon(isCorrect));
         audio.error().play();
       }
@@ -123,5 +127,16 @@ window.onload = () => {
     if (isContain('card-switch', target)) {
       turnsCard(target);
     }
+  });
+  window.addEventListener('unload', () => {
+    const storage = [];
+    nodeStatistics.forEach((categoryType) => {
+      const category = [];
+      for (let node = 0; node < categoryType.length; node += 1) {
+        category.push(categoryType[node].statisticsState());
+      }
+      storage.push(category);
+    });
+    localStorage.setItem('statistics', JSON.stringify(storage));
   });
 };
