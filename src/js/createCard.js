@@ -74,6 +74,18 @@ class Card {
     return this.word;
   }
 
+  getErrorRate() {
+    return this.errorRate;
+  }
+
+  getPlaySuccess() {
+    return this.countPlayYes;
+  }
+
+  getCountTrain() {
+    return this.countTrain;
+  }
+
   getStatistics() {
     return (`<div class="category">
       <span>${this.word}</span>

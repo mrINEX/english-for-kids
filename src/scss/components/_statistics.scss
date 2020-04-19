@@ -2,17 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .statistics__category {
     width: 300px;
     // box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    margin: 10px;
-    padding: 8px;
-    border-radius: 10px;
-    background: rgb(100,100,100) radial-gradient(circle at 0 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
-    box-shadow: inset rgba(0,0,0,.5) -3px -3px 8px, inset rgba(255,255,255,.9) 3px 3px 8px, rgba(0,0,0,.8) 3px 3px 8px -3px;
+    margin: 30px 10px 10px 10px;
 }
 
 .statistics__name {
@@ -24,11 +21,16 @@
     flex-direction: column;
     border-radius: 10px;
     padding: 5px;
-    margin: 20px 0;
+    width: 300px;
+    margin: 40px 4px 0 4px;
     .wrapper-count {
         display: flex;
         flex-direction: column;
     }
+    padding: 8px;
+    border-radius: 10px;
+    background: rgb(100,100,100) radial-gradient(circle at 0 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
+    box-shadow: inset rgba(0,0,0,.5) -3px -3px 8px, inset rgba(255,255,255,.9) 3px 3px 8px, rgba(0,0,0,.8) 3px 3px 8px -3px;
 }
 
 .train {
@@ -45,4 +47,8 @@
         color: cornsilk;
         background: black;
     }
+}
+
+.sort-wrapper {
+    position: absolute;
 }

@@ -13,11 +13,13 @@ const { startPlay } = require('./js/startPlay');
 const { makeMenu, makeStatistics } = require('./js/makeMenu');
 const { isContain } = require('./js/isContain');
 const { increment, incrementPlay } = require('./js/setStatistics');
+const { sortStatistics } = require('./js/makeMenu');
 const { isPlay } = require('./js/isPlay');
 const { win } = require('./js/isWin');
 const { data } = require('./js/data');
 const { audio } = require('./js/getSong');
 const { getIcon } = require('./js/icon');
+const { storage } = require('./js/storage');
 
 window.onload = () => {
   let count = 0;
@@ -39,6 +41,43 @@ window.onload = () => {
   });
 
   document.addEventListener('click', ({ target }) => {
+    if (isContain('sort', target)) {
+      if (target.hasAttribute('data-active')) {
+        target.removeAttribute('data-active');
+        sortStatistics(nodeStatistics, 'alphabet', 'not-reverse');
+      } else {
+        target.setAttribute('data-active', 'true');
+        sortStatistics(nodeStatistics, 'alphabet', 'reverse');
+      }
+    }
+    if (isContain('rate', target)) {
+      if (target.hasAttribute('data-active')) {
+        target.removeAttribute('data-active');
+        sortStatistics(nodeStatistics, 'errorRate', 'not-reverse');
+      } else {
+        target.setAttribute('data-active', 'true');
+        sortStatistics(nodeStatistics, 'errorRate', 'reverse');
+      }
+    }
+    if (isContain('train-click', target)) {
+      if (target.hasAttribute('data-active')) {
+        target.removeAttribute('data-active');
+        sortStatistics(nodeStatistics, 'trainNumber', 'not-reverse');
+      } else {
+        target.setAttribute('data-active', 'true');
+        sortStatistics(nodeStatistics, 'trainNumber', 'reverse');
+      }
+    }
+    if (isContain('play-success', target)) {
+      if (target.hasAttribute('data-active')) {
+        target.removeAttribute('data-active');
+        sortStatistics(nodeStatistics, 'playSuccess', 'not-reverse');
+      } else {
+        target.setAttribute('data-active', 'true');
+        sortStatistics(nodeStatistics, 'playSuccess', 'reverse');
+      }
+    }
+
     if (!target.classList.contains('hamburger')) {
       hideNavigation('.navigation', '.hamburger');
     }
@@ -129,14 +168,6 @@ window.onload = () => {
     }
   });
   window.addEventListener('unload', () => {
-    const storage = [];
-    nodeStatistics.forEach((categoryType) => {
-      const category = [];
-      for (let node = 0; node < categoryType.length; node += 1) {
-        category.push(categoryType[node].statisticsState());
-      }
-      storage.push(category);
-    });
-    localStorage.setItem('statistics', JSON.stringify(storage));
+    storage(nodeStatistics);
   });
 };

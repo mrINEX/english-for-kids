@@ -188,7 +188,7 @@ const data = [
     },
     {
       word: 'skip',
-      translation: 'пропускать, прыгать',
+      translation: 'пропускать',
       image: 'img/skip.jpg',
       audioSrc: 'audio/skip.mp3',
     },
